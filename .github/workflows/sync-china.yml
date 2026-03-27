@@ -33,6 +33,10 @@ jobs:
           git config --global --get-all safe.directory
       - name: Sync to CodeCommit
         uses: youyo/sync-up-to-codecommit-action@v1
+        env:
+          GIT_CONFIG_COUNT: 1
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: /github/workspace
         with:
           repository_name: my-china-branch
           aws_region: us-east-1
