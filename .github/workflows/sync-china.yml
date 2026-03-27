@@ -20,7 +20,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
+      - name: set up permission
+        run: |
+          git config --global --add safe.directory /github/workspace
       - name: Sync to CodeCommit
         uses: youyo/sync-up-to-codecommit-action@v1
         with:
