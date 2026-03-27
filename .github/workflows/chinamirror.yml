@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - test-*
+      - codecommit
 
     paths-ignore:
       - "**/*.md"
