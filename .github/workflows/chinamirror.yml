@@ -35,7 +35,7 @@ jobs:
         with:
           role-to-assume: arn:aws-cn:iam::${{ vars.AWS_DEV_ACCOUNT_ID }}:role/github.com/${{ github.event.repository.name }}-mirror
           aws-region: cn-northwest-1
-          role-session-name: github-actions-mirror
+          role-session-name: eng-iam-workflow-role-global
 
 
       - name: Setup Git Credentials Helper
