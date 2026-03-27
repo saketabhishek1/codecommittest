@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Clone bare repository
         run: |
-          git clone --bare "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
+          git clone --bare "https://x-access-token:${GITHUB_TOKEN}@github.com/${GIT_REPOSITORY_GITHUB}.git" .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,7 +45,7 @@ jobs:
 
       - name: Mirror to CodeCommit
         run: |
-          git push --mirror "https://git-codecommit.cn-northwest-1.amazonaws.com.cn/v1/repos/${GITHUB_REPOSITORY##*/}"
+          git push --mirror "https://git-codecommit.cn-northwest-1.amazonaws.com.cn/v1/repos/${GIT_REPOSITORY_CM##*/}"
 
   mirror-codecommit-prod:
     name: Mirror to China CodeCommit Prod Account
