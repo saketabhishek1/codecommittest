@@ -3,7 +3,7 @@ name: Sync to AWS CodeCommit
 on:
   push:
     branches:
-      - my-china-branch
+      - codecommit
 
 jobs:
   sync:
