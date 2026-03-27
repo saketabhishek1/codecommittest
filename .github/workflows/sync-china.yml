@@ -20,9 +20,17 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: set up permission
+      - name: Mark workspace as safe for git
+        shell: bash
         run: |
+          set -euo pipefail
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          git --version
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          # Some actions/tools still touch /github/workspace directly
           git config --global --add safe.directory /github/workspace
+          # Useful for debugging:
+          git config --global --get-all safe.directory
       - name: Sync to CodeCommit
         uses: youyo/sync-up-to-codecommit-action@v1
         with:
